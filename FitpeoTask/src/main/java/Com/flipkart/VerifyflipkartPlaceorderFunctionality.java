@@ -26,7 +26,7 @@ public class VerifyflipkartPlaceorderFunctionality {
 		
 		  WebDriverManager.chromedriver().setup();
 		  ChromeOptions options = new ChromeOptions();
-		  options.addArguments("--incognito");
+//		  options.addArguments("--incognito");
 	      WebDriver driver=new ChromeDriver(options);
 	      System.out.println("Browser Launched");
 	      
@@ -49,7 +49,7 @@ public class VerifyflipkartPlaceorderFunctionality {
 	    	//Search Box
 	    	  WebElement SearchBox=driver.findElement(By.xpath("//input[@title='Search for products, brands and more']"));
 	    	  jse.executeScript("arguments[0].click();", SearchBox);
-	    	  SearchBox.sendKeys("ipad");
+	    	  SearchBox.sendKeys("iPhone");
 	    	  System.out.println("Entered ipad in Search Box");
 	    	  
 	    	//click on Search Button
@@ -59,13 +59,13 @@ public class VerifyflipkartPlaceorderFunctionality {
 	    	   driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
 	    	  
 	    	  //Price High to Low filter 
-	    	  WebElement priceHightoLow=driver.findElement(By.xpath("//div[text()='Price -- High to Low']"));
-	    	  wait.until(ExpectedConditions.visibilityOf(priceHightoLow));
-	    	  jse.executeScript("arguments[0].click();", priceHightoLow); 
-	    	  System.out.println("Selected Price High To Low filter option");
+	    	  WebElement newestfirst=driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[3]/div[1]/div[2]/div[1]/div/div/div[2]/div[5]"));
+	    	  wait.until(ExpectedConditions.visibilityOf(newestfirst));
+	    	  jse.executeScript("arguments[0].click();", newestfirst); 
+	    	  System.out.println("Selected Newest first filter option");
 	    	  Thread.sleep(6000);
 	    	  //Select one of the item
-	   	  WebElement ipad=driver.findElement(By.xpath("(//img[@class='_396cs4'])[1]"));
+	   	  WebElement ipad=driver.findElement(By.xpath("(//img[@class='_396cs4'])[2]"));
 	    	  jse.executeScript("arguments[0].click();", ipad);  
 	    	  System.out.println("Selected an ipad"); 
 	    	  
@@ -112,7 +112,7 @@ public class VerifyflipkartPlaceorderFunctionality {
 		    	    WebElement MobileNumber=driver.findElement(By.xpath("//input[@type='text']"));	 
 		    	    wait.until(ExpectedConditions.visibilityOf(MobileNumber));
 		    	    jse.executeScript("arguments[0].click();", MobileNumber);
-		    	    MobileNumber.sendKeys("8530047964");  
+		    	    act.sendKeys(MobileNumber, "8530047964") ;
 		    	    System.out.println("Entered Mobile Number"); 	    
 		    	    Thread.sleep(5000);
 		    	    
@@ -120,7 +120,7 @@ public class VerifyflipkartPlaceorderFunctionality {
 		    	    
 		    	    
 	    	//Close 
-//		    driver.quit();	    
+		    driver.quit();	    
 	    	    
 	    	    
 	    	    
